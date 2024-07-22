@@ -20,7 +20,7 @@ namespace AnimalIdentifier
 
                 Console.WriteLine();
 
-                StartScreen();
+                AnimalIdentifierUtility.StartScreen();
 
                 Console.Clear();
                 Console.Write("Please enter pets name: ");
@@ -40,33 +40,16 @@ namespace AnimalIdentifier
                 Console.Clear();
                 Console.Write($"Is {name} vaxinated y/n? ");
                 string userResponse = Console.ReadLine();
-                animal.isAnimalVaxxinated = BoolUtilities.YesOrNo(userResponse);
+                animal.isAnimalVaxxinated = BoolUtilities.ParseBool(userResponse);
 
-                animal.AnimalSheet();
+                animal.AnimalInformation();
 
-                ContinueScreen();
+                animal.FixFormErrors();
+
+                animal.AnimalInformation();
+
+                AnimalIdentifierUtility.ContinueScreen();
             }
-        }
-    
-
-       public static void StartScreen()
-        {
-            Console.Clear();
-            Console.Write("Welcome to Dr.Foobars office. ");
-            ContinueScreen();
-        }
-
-        public static void ContinueScreen()
-        {
-            Console.WriteLine();
-            Console.Write($"Press enter to continue.");
-            Console.ReadLine();
-        }
-        public static void ExitScreen()
-        {
-            Console.Clear();
-            Console.Write($"Press Enter to exit.");
-            Console.ReadLine();
         }
     }
 }

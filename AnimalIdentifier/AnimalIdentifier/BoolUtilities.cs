@@ -8,7 +8,7 @@ namespace AnimalIdentifier
 {
     internal class BoolUtilities
     {
-        public static bool YesOrNo(string answer)
+        public static bool ParseBool(string answer)
         {
             if (answer == "y")
             {
