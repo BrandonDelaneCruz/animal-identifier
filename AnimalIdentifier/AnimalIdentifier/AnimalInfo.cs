@@ -22,31 +22,29 @@ namespace AnimalIdentifier
         public void PrintAnimalInfromation()
         {
             Console.Clear();
-            Console.WriteLine($"Pets name: {animalName}" +
-                    $"\n{animalName} is a: {animalType}" +
-                    $"\n{animalName} is: {animalAge}" +
-                    $"\nIs {animalName} Vaxinated: {isAnimalVaxxinated}" +
-                    $"\n{animalName} arrived on: {whenDidAnimalArrive}");
+            Console.WriteLine(
+                $"Pets name: {animalName}" +
+                $"\n{animalName} is a: {animalType}" +
+                $"\n{animalName} is: {animalAge}" +
+                $"\nIs {animalName} Vaxinated: {isAnimalVaxxinated}" +
+                $"\n{animalName} arrived on: {whenDidAnimalArrive}");
         }
 
         public void AllowUserToEditAnimalInformation()
         {
             bool isInfoCorrect = AnimalIdentifierUtility.IsAnimalInfoCorrect();
-            if (!isInfoCorrect)
+
+            while (!isInfoCorrect)
             {
-                bool userIsEditingOptions = true;
-                while (userIsEditingOptions)
-                {
-                    WriteEditAnimalOptionsToScreen();
-                    string userResponse = Console.ReadLine();
+                WriteEditAnimalOptionsToScreen();
+                string userResponse = Console.ReadLine();
 
-                    Console.Clear();
+                Console.Clear();
 
-                    DisplayCorrectFormDependingOnOptionsSelected(userResponse);
+                DisplayCorrectFormDependingOnOptionsSelected(userResponse);
 
-                    PrintAnimalInfromation();
-                    userIsEditingOptions = AnimalIdentifierUtility.IsAnimalInfoCorrect();
-                }
+                PrintAnimalInfromation();
+                isInfoCorrect = AnimalIdentifierUtility.IsAnimalInfoCorrect();
             }
         }
 
